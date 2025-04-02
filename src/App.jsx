@@ -1,18 +1,20 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import NavBar from './components/NavBar';
-import ItemListContainer from './components/ItemListContainer';
-import './App.css'
+import React from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import HomePage from "./pages/HomePage";
+import ProductDetailPage from "./pages/ProductDetailPage";
+import Header from "./components/organisms/Header";
 
-function App() {
+const App = () => {
   return (
-    <div>
-      <NavBar />
-      <ItemListContainer greeting="¡Bienvenido a Mi Tienda!" />
-    </div>
+    <Router>
+      <Header />
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/product/:productId" element={<ProductDetailPage />} />
+        <Route path="*" element={<h1>404 - Página no encontrada</h1>} />
+      </Routes>
+    </Router>
   );
-}
+};
 
 export default App;
-
